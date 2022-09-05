@@ -32,10 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Мои приложения
-    'Personal_diarys',
-    'users',
+    #'Personal_diarys',
+    #'users',
     # Сторонние приложения
-    'bootstrap4',
+    #'bootstrap4',
     # Приложения по умолчанию
     'django.contrib.admin',
     'django.contrib.auth',
