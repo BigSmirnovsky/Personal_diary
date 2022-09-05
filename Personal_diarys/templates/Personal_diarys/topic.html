@@ -1,0 +1,61 @@
+{% extends "Personal_diarys/base.html" %}
+
+{% block page_header %}
+  <div class="jumbotron">
+  <h1>{{ topic }}</h1>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span></a>
+    </li>
+    <li class="page-item"><a href="#" class="page-link">1</a></li>
+    <li class="page-item">
+      <a href="#" class="page-link" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+  </nav>
+  <p>
+    <a class="btn btn-primary" href="{% url 'Personal_diarys:new_entry' topic.id %}">Добавить новую запись</a>
+  </p>   
+  {% for entry in entries %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ entry.date_added|date:'M d, Y H:i' }}
+        <small><a class="btn btn-light" href="{% url 'Personal_diarys:edit_entry' entry.id %}">
+            Редактировать</a></small>
+        <small><a class= "btn btn-light" href="{% url 'Personal_diarys:delete_entry' entry.id %}">
+          Удалить </a></small>
+      </h4>
+      <div class="card-body">
+        {{ entry.text|linebreaks }}
+      </div>
+    </div>
+  {% empty %}
+    <p>В этой теме нет записей.</p>
+  {% endfor %}
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span></a>
+    </li>
+    <li class="page-item"><a href="#" class="page-link">1</a></li>
+    <li class="page-item">
+      <a href="#" class="page-link" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+  </nav>
+{% endblock content %}
+
+<!-- Доработать переключение страниц -->
+
+    
