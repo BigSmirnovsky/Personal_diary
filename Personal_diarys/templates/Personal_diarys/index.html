@@ -1,0 +1,26 @@
+{% extends "Personal_diarys/base.html" %}
+
+{% block page_header %}
+  {% if user.is_authenticated %}
+    <div class="jumbotron">
+      <h1 class="display-3">Личный дневник</h1>
+      <p class="lead">Запишите, что нового узнали в последнее время.</p>
+
+      <a class="btn btn-lg btn-primary" href="{% url 'Personal_diarys:new_topic' %}"
+          role="button">Добавить тему &raquo;</a>
+    </div>
+  {% else %}
+    <div class="jumbotron">
+      <h1 class="display-3">Личный дневник</h1>
+      <p class="lead">Заведите свой собственный дневник и ведите список тем,
+          которые наиболее интересны вам. Всякий раз, когда вы узнаёте что-то новое
+          по какой-либо теме, делайте запись с кратким изложением того, что вы узнали.</p>
+
+      <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+          role="button">Регистрация &raquo;</a>
+      
+      <a class="btn btn-lg btn-primary" href="{% url 'users:login' %}"
+          role="button">Вход &raquo;</a>
+    </div>  
+  {% endif %}  
+{% endblock page_header %} 
