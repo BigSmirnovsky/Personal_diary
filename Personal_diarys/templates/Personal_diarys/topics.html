@@ -1,0 +1,55 @@
+{% extends "Personal_diarys/base.html" %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1>Темы</h1>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span></a>
+    </li>
+    <li class="page-item"><a href="#" class="page-link">1</a></li>
+    <li class="page-item">
+      <a href="#" class="page-link" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+  </nav>
+  <h3><a href="{% url 'Personal_diarys:new_topic' %}">Добавить новую тему</h3>
+    {% for topic in topics %}
+    <div class="list-group">
+      <h3>
+        <a href="{% url 'Personal_diarys:topic' topic.id %}" 
+        class="list-group-item list-group-item-action list-group-item-info">{{ topic }}</a>
+      </h3>
+    </div>
+    <h6>
+      <a href="{% url 'Personal_diarys:delete_topic' topic.id %}"
+      class= "btn btn-lg btn-light" >Удалить тему</a>
+    </h6>
+    {% empty %}
+    <li><h3>Темы еще не добавлены.</h3></li>
+    {% endfor %}
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span></a>
+    </li>
+    <li class="page-item"><a href="#" class="page-link">1</a></li>
+    <li class="page-item">
+      <a href="#" class="page-link" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+  </nav>
+{% endblock content %}
+ 
+<!-- Доработать переключение страниц -->
