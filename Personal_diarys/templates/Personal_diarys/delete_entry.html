@@ -1,0 +1,18 @@
+{% extends "Personal_diarys/base.html" %}
+
+{% block page_header %}
+  <h3><a>Удаление записи</a></h3>
+{% endblock page_header %}
+
+{% block content %}
+    
+  <h3><a>Вы точно хотите эту запись?</a></h3>
+  <form method='post'>
+      {% csrf_token %}
+      {{ form.as_p }} 
+      <input class="btn btn-lg btn-danger" type="submit" value="Удалить">
+      <a class="btn btn-lg btn-primary" href="{% url 'Personal_diarys:topics' %}">Отмена</a>
+  </form>  
+{% endblock content %}
+
+<!-- Нужно чтобы после удаления переходило на тему назад, а не на все темы -->
